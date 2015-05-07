@@ -31,19 +31,22 @@ A number of methods built to help build and maintain decision trees.
 
 #### buildTree
 ```Python
-buildTree(database, cases, attributeIndices)```
+buildTree(database, cases, attributeIndices)
+```
 
 Builds a tree from the given databases. Checks if the current case is all true or false. If so, it sets the node as a leaf and returns. Otherwise, it will pick what the best available attribute is from the available list, gets the values for that attribute, gets the label information, creates a node for the current decision, and populates its children recursively before returning the new node. 
 
 #### findBestAttr
 ```Pytho
-findBestAttr(cases, attributeIndicies, database)```
+findBestAttr(cases, attributeIndicies, database)
+```
 
 Finds the best attribute to work from. This is an internal function, and should most likely not be called outside of the buildTree function
 
 #### printTrees
 ```Python
-printTree(nodeToPrint, toPrint, level)```
+printTree(nodeToPrint, toPrint, level)
+```
 
 Prints the tree from the current node. toPrint is the value that is leading to this current node. Normally, you will use this on the root node to print the whole tree, but can be used on individual nodes to show subtrees. The average call on the root will look like the following
 ```Python
@@ -55,7 +58,8 @@ where root is the root node of a tree
 
 #### dotOutput
 ```Python
-dotOutput(nodeToPrint, fileToWriteTo)```
+dotOutput(nodeToPrint, fileToWriteTo)
+```
 
 This creates a graphviz “.dot” file, which can be used with the graphviz software to display a visual representation of the decision tree. This is the method you call initially to start the creation of the file. 
 
@@ -64,13 +68,15 @@ www.graphviz.org
 
 #### dotOutputRec
 ```Python
-dotOutputRec(nodeToPrint, fileToWriteTo, parrentLabel, transitionLabel)```
+dotOutputRec(nodeToPrint, fileToWriteTo, parrentLabel, transitionLabel)
+```
 
 This is the recursive function for the graphviz file creator. It works node per node, creating an appropriate node in the graphviz format, writes the node into the file, and then recursively calls this function on all the nodes children. This shouldn`t be called directly, but instead though the `dotOutput` function. 
 
 #### chiSquaredTest
 ```Python
-chiSquaredTest(nodeToTest)```
+chiSquaredTest(nodeToTest)
+```
 
 This method will apply the Chi-Square test on the provided node, which will decide whether or not a node is significant enough to remain on the tree or not. If it isn`t, this function calls a pruning function that will change the insignificant node into a leaf node of the appropriate type. 
 
@@ -79,7 +85,8 @@ http://www2.lv.psu.edu/jxm57/irp/chisquar.html
 
 #### Prune
 ```Python
-prune(nodeToPrune)```
+prune(nodeToPrune)
+```
 
 Takes in a node, and decides if it should become a true or false leaf node. It will also clear off its children, and their labels from the node. 
 
