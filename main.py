@@ -5,7 +5,7 @@ import getpass
 import os
 
 # Importing the Decision Tree Package
-from decisionTreePackage.dataBase import DataBase
+from decisionTreePackage.database import Database
 from decisionTreePackage.decTreeNode import Node
 from decisionTreePackage.treeTools import TreeTools
 
@@ -20,14 +20,14 @@ mFileName = tkinter.filedialog.askopenfilename(initialdir='C:/Users/%s' % user, 
 gui.destroy()
 
 # Creating the database from file
-mDataBase = DataBase(mFileName)
-###mDataBase.printDataBase()
+mDatabase = Database(mFileName)
+###mDatabase.printDatabase()
 
 # Create the tree
 tTools = TreeTools()
-caseRangeInit = list(range(mDataBase.getNumTrainingCases()))
-attrRangeInit = list(range(mDataBase.getNumAttributes() - 1))
-root = tTools.buildTree(mDataBase, caseRangeInit, attrRangeInit)
+caseRangeInit = list(range(mDatabase.getNumTrainingCases()))
+attrRangeInit = list(range(mDatabase.getNumAttributes() - 1))
+root = tTools.buildTree(mDatabase, caseRangeInit, attrRangeInit)
 
 # Print the tree
 tTools.printTree(root, "root", 0)
@@ -40,7 +40,6 @@ if (answer == "Y" or answer == "YES"):
             writeFile = open(mFileName.split('.')[0] + "RESULTS.gv", 'w')
             tTools.dotOutput (root, writeFile)
             writeFile.close() 
-            print(mFileName.split('.')[0] + "RESULTS.gv")
 
 # Find if the user wants to chisquare test
 print("Prune tree? Y/N")

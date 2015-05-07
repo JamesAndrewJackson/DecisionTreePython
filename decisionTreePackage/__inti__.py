@@ -1,1 +1,1 @@
-__all__ = ["dataBase", "decTreeNode", "treeTools"]
+__all__ = ["database", "decTreeNode", "treeTools"]
